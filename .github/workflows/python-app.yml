@@ -1,4 +1,4 @@
-name: Run Python App
+name: Simple Python App
 
 on:
   push:
@@ -9,11 +9,11 @@ on:
       - main
 
 jobs:
-  run-app:
+  run:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
+    - name: Checkout repository
       uses: actions/checkout@v3
 
     - name: Set up Python
@@ -26,6 +26,5 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Run the app
-      run: |
-        python app.py
+    - name: Run Python app
+      run: python app.py

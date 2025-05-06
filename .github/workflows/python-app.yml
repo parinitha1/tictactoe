@@ -1,4 +1,4 @@
-name: Run Flask App
+name: Run Python App
 
 on:
   push:
@@ -9,11 +9,11 @@ on:
       - main
 
 jobs:
-  build:
+  run-app:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
+    - name: Checkout code
       uses: actions/checkout@v3
 
     - name: Set up Python
@@ -26,9 +26,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Run Flask App
-      env:
-        FLASK_APP: app.py
-        FLASK_ENV: development
+    - name: Run the app
       run: |
-        flask run --host=0.0.0.0 --port=5000
+        python app.py
